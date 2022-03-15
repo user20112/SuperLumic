@@ -1,6 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.Screens;
+using SuperLumic.Abstracts;
+using System;
+using System.Collections.Generic;
 
 namespace SuperLumic
 {
@@ -9,13 +13,71 @@ namespace SuperLumic
     /// </summary>
     public class SuperLumic : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        
+        public static float CurrentPopupDrawlevel = 0.9f;
+        public static float EndProjectileDrawLevel = .69f;
+        public static float EndProjectileEffectDrawLevel = .59f;
+        public static float EndRoomDrawLevel = .49f;
+        public static float EndShipDrawLevel = .29f;
+        public static float EndShipEffectDrawLevel = .19f;
+        public static float EndStageLayer = .09f;
+        public static float EndUIDrawLevel = .89f;
+        public static float EndWeaponDrawLevel = .39f;
+        public static double Height;
+        public static SuperLumic Instance;
+        public static Random Random = new Random();
+        public static float ScreenLayer = .000001f;
+        public static float StartingProjectileDrawLevel = .6f;
+        public static float StartingProjectileEffectDrawLevel = .5f;
+        public static float StartingRoomDrawLevel = .4f;
+        public static float StartingShipDrawLevel = .2f;
+        public static float StartingShipEffectDrawLevel = .1f;
+        public static float StartingStageLayer = .01f;
+        public static float StartingUIDrawLevel = .8f;
+        public static float StartingWeaponDrawLevel = .3f;
+        public static double Width;
+        public GraphicsDeviceManager Graphics;
+        public ScreenManager ScreenManager;
+        public SpriteBatch SpriteBatch;
+        private List<AbstractPopup> Popups = new List<AbstractPopup>();
+
         public SuperLumic()
         {
-            graphics = new GraphicsDeviceManager(this);
+            Instance = this;
+            Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            ScreenManager = new ScreenManager();
+            Components.Add(ScreenManager);
+            Window.AllowUserResizing = true;
+            SetFullScreen(false);
+        }
+
+        public void PopPopup()
+        {
+        }
+
+        public void PushPopup(AbstractPopup Popup)
+        {
+        }
+
+        public void SetFullScreen(bool value)
+        {
+            Graphics.HardwareModeSwitch = false;
+            Graphics.IsFullScreen = value;
+            Graphics.ApplyChanges();
+        }
+
+        /// <summary>
+        /// This is called when the game should draw itself.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.Black);
+            Height = GraphicsDevice.PresentationParameters.BackBufferHeight;
+            Width = GraphicsDevice.PresentationParameters.BackBufferWidth;
+            Graphics.BeginDraw();
+            base.Draw(gameTime);
+            Graphics.EndDraw();
         }
 
         /// <summary>
@@ -26,8 +88,6 @@ namespace SuperLumic
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -37,10 +97,7 @@ namespace SuperLumic
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
         /// <summary>
@@ -49,7 +106,6 @@ namespace SuperLumic
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
         /// <summary>
@@ -59,25 +115,16 @@ namespace SuperLumic
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState keyboardState = Keyboard.GetState();
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
-
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
+        private static float NextFloat(float min, float max)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
-            base.Draw(gameTime);
+            double val = (Random.NextDouble() * (max - min) + min);
+            return (float)val;
         }
     }
 }
