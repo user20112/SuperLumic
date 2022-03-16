@@ -4,7 +4,7 @@ namespace SuperLumic.Abstracts
 {
     public abstract class AbstractShip : AbstractUIElement
     {
-        protected AbstractShip(SuperLumic game, double x, double y, double width, double height) : base(game, x, y, width, height, SuperLumic.StartingShipDrawLevel, SuperLumic.EndShipDrawLevel)
+        protected AbstractShip(object Parent, double x, double y, double width, double height) : base(Parent, x, y, width, height, SuperLumic.StartingShipDrawLevel, SuperLumic.EndShipDrawLevel)
         {
         }
 

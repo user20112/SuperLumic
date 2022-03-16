@@ -4,7 +4,7 @@ namespace SuperLumic.Abstracts
 {
     public abstract class AbstractStage : AbstractUIElement
     {
-        protected AbstractStage(SuperLumic game, double x, double y, double width, double height) : base(game, x, y, width, height, SuperLumic.StartingStageLayer, SuperLumic.EndStageLayer)
+        protected AbstractStage(object Parent, double x, double y, double width, double height) : base(Parent, x, y, width, height, SuperLumic.StartingStageLayer, SuperLumic.EndStageLayer)
         {
         }
 

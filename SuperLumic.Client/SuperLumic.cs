@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 using SuperLumic.Abstracts;
+using SuperLumic.Content;
+using SuperLumic.Screens;
+using SuperLumic.Service;
 using System;
 using System.Collections.Generic;
 
@@ -24,6 +27,7 @@ namespace SuperLumic
         public static float EndWeaponDrawLevel = .39f;
         public static double Height;
         public static SuperLumic Instance;
+        public static float MouseLayer = .999f;
         public static Random Random = new Random();
         public static float ScreenLayer = .000001f;
         public static float StartingProjectileDrawLevel = .6f;
@@ -36,27 +40,70 @@ namespace SuperLumic
         public static float StartingWeaponDrawLevel = .3f;
         public static double Width;
         public GraphicsDeviceManager Graphics;
+        public Tuple<int, int> MouseSize;
         public ScreenManager ScreenManager;
         public SpriteBatch SpriteBatch;
-        private List<AbstractPopup> Popups = new List<AbstractPopup>();
+        private Texture2D Background;
+        private int PillarBoxXOffset = 0;
+        private List<AbstractPopup> PopupsStack = new List<AbstractPopup>();
+        private List<AbstractScreen> ScreenStack = new List<AbstractScreen>();
 
         public SuperLumic()
         {
             Instance = this;
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            ScreenManager = new ScreenManager();
-            Components.Add(ScreenManager);
             Window.AllowUserResizing = true;
+            Components.Add(new MouseService());
             SetFullScreen(false);
+            PushScreen(new StartScreen(this));
         }
 
         public void PopPopup()
         {
+            if (ScreenStack.Count > 1)
+            {//prevent from popping past last screen
+                Components.Add(ScreenStack[ScreenStack.Count - 2]);
+                Components.Remove(ScreenStack[ScreenStack.Count - 1]);
+                ScreenStack[ScreenStack.Count - 1].Dispose();
+                ScreenStack.RemoveAt(ScreenStack.Count - 1);
+            }
+        }
+
+        public void PopScreen()
+        {
+            if (PopupsStack.Count > 0)
+            {
+                Components.Remove(PopupsStack[PopupsStack.Count - 1]);
+                PopupsStack[PopupsStack.Count - 1].Dispose();
+                PopupsStack.RemoveAt(PopupsStack.Count - 1);
+            }
         }
 
         public void PushPopup(AbstractPopup Popup)
         {
+            if (!Components.Contains(Popup))
+            {
+                Components.Add(Popup);
+                PopupsStack.Add(Popup);
+            }
+        }
+
+        public void PushScreen(AbstractScreen screen)
+        {
+            if (!Components.Contains(screen))
+            {
+                if (ScreenStack.Count > 0)
+                {
+                    Components.Remove(ScreenStack[ScreenStack.Count - 1]);
+                }
+                Components.Add(screen);
+                ScreenStack.Add(screen);
+            }
+            else
+            {
+                throw new Exception("This screen instance is already here ?");
+            }
         }
 
         public void SetFullScreen(bool value)
@@ -66,6 +113,18 @@ namespace SuperLumic
             Graphics.ApplyChanges();
         }
 
+        internal void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle rectangle, Color tintColor, float rotation, Vector2 origin, SpriteEffects none, float adjustedLayerDepth)
+        {
+            destinationRectangle.X = destinationRectangle.X + PillarBoxXOffset;
+            SpriteBatch.Draw(texture, destinationRectangle, rectangle, tintColor, rotation, origin, none, adjustedLayerDepth);
+        }
+
+        internal Tuple<double, double> GetMousePosition()
+        {
+            Vector2 Position = Mouse.GetState().Position.ToVector2();
+            return new Tuple<double, double>(Position.X / Width, Position.Y / Height);
+        }
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -73,11 +132,11 @@ namespace SuperLumic
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            Height = GraphicsDevice.PresentationParameters.BackBufferHeight;
-            Width = GraphicsDevice.PresentationParameters.BackBufferWidth;
-            Graphics.BeginDraw();
+            RefreshPillarBoxes();
+            MouseSize = new Tuple<int, int>(16, 16);
+            SpriteBatch.Begin(SpriteSortMode.FrontToBack);
             base.Draw(gameTime);
-            Graphics.EndDraw();
+            SpriteBatch.End();
         }
 
         /// <summary>
@@ -98,6 +157,7 @@ namespace SuperLumic
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
+            Background = TextureManager.Get("Backgrounds\\bg_lonelyBlueStar.png");
         }
 
         /// <summary>
@@ -106,6 +166,15 @@ namespace SuperLumic
         /// </summary>
         protected override void UnloadContent()
         {
+            foreach (AbstractScreen screen in ScreenStack)
+            {
+                screen.Dispose();
+            }
+            foreach (AbstractPopup popup in PopupsStack)
+            {
+                popup.Dispose();
+            }
+            TextureManager.OnKill();
         }
 
         /// <summary>
@@ -125,6 +194,22 @@ namespace SuperLumic
         {
             double val = (Random.NextDouble() * (max - min) + min);
             return (float)val;
+        }
+
+        private void RefreshPillarBoxes()
+        {
+            int ActualHeight = GraphicsDevice.PresentationParameters.BackBufferHeight;
+            int ActualWidth = GraphicsDevice.PresentationParameters.BackBufferWidth;
+            Rectangle AspectRatio = new Rectangle(0, 0, 16, 9);
+            Rectangle WindowRectangle = new Rectangle(0, 0, ActualWidth, ActualHeight);
+            double scale = (WindowRectangle.Width / AspectRatio.Width);
+            if (AspectRatio.Height * scale > WindowRectangle.Height)
+                scale = WindowRectangle.Height / AspectRatio.Height;
+            AspectRatio.Width = (int)(AspectRatio.Width * scale);
+            AspectRatio.Height = (int)(AspectRatio.Height * scale);
+            PillarBoxXOffset = (int)((WindowRectangle.Width - AspectRatio.Width) / 2);
+            Height = AspectRatio.Height;
+            Width = AspectRatio.Width;
         }
     }
 }

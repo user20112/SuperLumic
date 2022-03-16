@@ -4,7 +4,7 @@ namespace SuperLumic.Abstracts
 {
     public abstract class AbstractPopup : AbstractUIElement
     {
-        private AbstractPopup(SuperLumic game, double x, double y, double width, double height, float PopupLayerStart, float PopupLayerEnd) : base(game, x, y, width, height, PopupLayerStart, PopupLayerEnd)
+        private AbstractPopup(object Parent, double x, double y, double width, double height, float PopupLayerStart, float PopupLayerEnd) : base(Parent, x, y, width, height, PopupLayerStart, PopupLayerEnd)
         {
         }
 

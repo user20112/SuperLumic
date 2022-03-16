@@ -50,6 +50,10 @@
     <Compile Include="Abstracts\AbstractUIElement.cs" />
     <Compile Include="Abstracts\AbstractWeapon.cs" />
     <Compile Include="Abstracts\AbstractPopup.cs" />
+    <Compile Include="Screens\PlayScreen.cs" />
+    <Compile Include="Screens\StartScreen.cs" />
+    <Compile Include="Service\MouseService.cs" />
+    <Compile Include="TextureManager.cs" />
     <Compile Include="Stages\StageScreen.cs" />
     <Compile Include="SuperLumic.cs" />
     <Compile Include="Program.cs" />
@@ -122,7 +126,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Service\" />
     <Folder Include="Ships\" />
     <Folder Include="Weapons\" />
   </ItemGroup>

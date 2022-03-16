@@ -4,7 +4,7 @@ namespace SuperLumic.Abstracts
 {
     public abstract class AbstractUI : AbstractUIElement
     {
-        protected AbstractUI(SuperLumic game, double x, double y, double width, double height) : base(game, x, y, width, height, SuperLumic.StartingUIDrawLevel, SuperLumic.EndUIDrawLevel)
+        protected AbstractUI(object Parent, double x, double y, double width, double height) : base(Parent, x, y, width, height, SuperLumic.StartingUIDrawLevel, SuperLumic.EndUIDrawLevel)
         {
         }
 

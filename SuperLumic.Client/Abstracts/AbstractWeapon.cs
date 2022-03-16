@@ -4,7 +4,7 @@ namespace SuperLumic.Abstracts
 {
     public abstract class AbstractWeapon : AbstractUIElement
     {
-        protected AbstractWeapon(SuperLumic game, double x, double y, double width, double height) : base(game, x, y, width, height, SuperLumic.StartingWeaponDrawLevel, SuperLumic.EndWeaponDrawLevel)
+        protected AbstractWeapon(object Parent, double x, double y, double width, double height) : base(Parent, x, y, width, height, SuperLumic.StartingWeaponDrawLevel, SuperLumic.EndWeaponDrawLevel)
         {
         }
 

@@ -9,6 +9,1220 @@
 /compress:False
 
 #-------------------------------- References --------------------------------#
+
 /reference:..\..\packages\MonoGame.Extended.Content.Pipeline.0.6.372\tools\MonoGame.Extended.Content.Pipeline.dl
+
 #---------------------------------- Content ---------------------------------#
+
+#begin Asteroids/ASTEROID1.png
+/copy:Asteroids/ASTEROID1.png
+
+#begin Asteroids/ASTEROID10.png
+/copy:Asteroids/ASTEROID10.png
+
+#begin Asteroids/ASTEROID11.png
+/copy:Asteroids/ASTEROID11.png
+
+#begin Asteroids/ASTEROID12.png
+/copy:Asteroids/ASTEROID12.png
+
+#begin Asteroids/ASTEROID13.png
+/copy:Asteroids/ASTEROID13.png
+
+#begin Asteroids/ASTEROID14.png
+/copy:Asteroids/ASTEROID14.png
+
+#begin Asteroids/ASTEROID15.png
+/copy:Asteroids/ASTEROID15.png
+
+#begin Asteroids/ASTEROID16.png
+/copy:Asteroids/ASTEROID16.png
+
+#begin Asteroids/ASTEROID17.png
+/copy:Asteroids/ASTEROID17.png
+
+#begin Asteroids/ASTEROID18.png
+/copy:Asteroids/ASTEROID18.png
+
+#begin Asteroids/ASTEROID19.png
+/copy:Asteroids/ASTEROID19.png
+
+#begin Asteroids/ASTEROID2.png
+/copy:Asteroids/ASTEROID2.png
+
+#begin Asteroids/ASTEROID20.png
+/copy:Asteroids/ASTEROID20.png
+
+#begin Asteroids/ASTEROID3.png
+/copy:Asteroids/ASTEROID3.png
+
+#begin Asteroids/ASTEROID4.png
+/copy:Asteroids/ASTEROID4.png
+
+#begin Asteroids/ASTEROID5.png
+/copy:Asteroids/ASTEROID5.png
+
+#begin Asteroids/ASTEROID6.png
+/copy:Asteroids/ASTEROID6.png
+
+#begin Asteroids/ASTEROID7.png
+/copy:Asteroids/ASTEROID7.png
+
+#begin Asteroids/ASTEROID8.png
+/copy:Asteroids/ASTEROID8.png
+
+#begin Asteroids/ASTEROID9.png
+/copy:Asteroids/ASTEROID9.png
+
+#begin Backgrounds/bg_blueStarcluster.png
+/copy:Backgrounds/bg_blueStarcluster.png
+
+#begin Backgrounds/bg_darknebula.png
+/copy:Backgrounds/bg_darknebula.png
+
+#begin Backgrounds/bg_dullstars.png
+/copy:Backgrounds/bg_dullstars.png
+
+#begin Backgrounds/bg_dullstars2.png
+/copy:Backgrounds/bg_dullstars2.png
+
+#begin Backgrounds/bg_lonelyBlueStar.png
+/copy:Backgrounds/bg_lonelyBlueStar.png
+
+#begin Backgrounds/bg_lonelyRedStar.png
+/copy:Backgrounds/bg_lonelyRedStar.png
+
+#begin Backgrounds/bg_lonelystar.png
+/copy:Backgrounds/bg_lonelystar.png
+
+#begin Backgrounds/bg_smallbluenebula.png
+/copy:Backgrounds/bg_smallbluenebula.png
+
+#begin Backgrounds/low_nebula.png
+/copy:Backgrounds/low_nebula.png
+
+#begin Backgrounds/low_storm.png
+/copy:Backgrounds/low_storm.png
+
+#begin Backgrounds/low_sun.png
+/copy:Backgrounds/low_sun.png
+
+#begin Backgrounds/z_bg_hubble_31.png
+/copy:Backgrounds/z_bg_hubble_31.png
+
+#begin Backgrounds/z_bg_nebula1.png
+/copy:Backgrounds/z_bg_nebula1.png
+
+#begin Backgrounds/z_bg_nebula10.png
+/copy:Backgrounds/z_bg_nebula10.png
+
+#begin Backgrounds/z_bg_nebula12.png
+/copy:Backgrounds/z_bg_nebula12.png
+
+#begin Backgrounds/z_bg_nebula13.png
+/copy:Backgrounds/z_bg_nebula13.png
+
+#begin Backgrounds/z_bg_nebula16.png
+/copy:Backgrounds/z_bg_nebula16.png
+
+#begin Backgrounds/z_bg_nebula2.png
+/copy:Backgrounds/z_bg_nebula2.png
+
+#begin Backgrounds/z_bg_nebula3.png
+/copy:Backgrounds/z_bg_nebula3.png
+
+#begin Backgrounds/z_bg_nebula4.png
+/copy:Backgrounds/z_bg_nebula4.png
+
+#begin Backgrounds/z_bg_nebula5.png
+/copy:Backgrounds/z_bg_nebula5.png
+
+#begin Backgrounds/z_bg_nebula6.png
+/copy:Backgrounds/z_bg_nebula6.png
+
+#begin Backgrounds/z_bg_nebula7.png
+/copy:Backgrounds/z_bg_nebula7.png
+
+#begin Backgrounds/z_bg_nebula8.png
+/copy:Backgrounds/z_bg_nebula8.png
+
+#begin Backgrounds/z_bg_nebula9.png
+/copy:Backgrounds/z_bg_nebula9.png
+
+#begin Backgrounds/z_bg_stars1.png
+/copy:Backgrounds/z_bg_stars1.png
+
+#begin Backgrounds/z_bg_sun_stars2.png
+/copy:Backgrounds/z_bg_sun_stars2.png
+
+#begin Backgrounds/z_bg_sun_stars4.png
+/copy:Backgrounds/z_bg_sun_stars4.png
+
+#begin Backgrounds/z_bg_xandra_01.png
+/copy:Backgrounds/z_bg_xandra_01.png
+
+#begin ButtonImages/Continue1.png
+/copy:ButtonImages/Continue1.png
+
+#begin ButtonImages/Continue2.png
+/copy:ButtonImages/Continue2.png
+
+#begin ButtonImages/Continue3.png
+/copy:ButtonImages/Continue3.png
+
+#begin ButtonImages/Credits1.png
+/copy:ButtonImages/Credits1.png
+
+#begin ButtonImages/Credits2.png
+/copy:ButtonImages/Credits2.png
+
+#begin ButtonImages/Credits3.png
+/copy:ButtonImages/Credits3.png
+
+#begin ButtonImages/Multiplayer1.png
+/copy:ButtonImages/Multiplayer1.png
+
+#begin ButtonImages/Multiplayer2.png
+/copy:ButtonImages/Multiplayer2.png
+
+#begin ButtonImages/Multiplayer3.png
+/copy:ButtonImages/Multiplayer3.png
+
+#begin ButtonImages/NewGame1.png
+/copy:ButtonImages/NewGame1.png
+
+#begin ButtonImages/NewGame2.png
+/copy:ButtonImages/NewGame2.png
+
+#begin ButtonImages/NewGame3.png
+/copy:ButtonImages/NewGame3.png
+
+#begin ButtonImages/Options1.png
+/copy:ButtonImages/Options1.png
+
+#begin ButtonImages/Options2.png
+/copy:ButtonImages/Options2.png
+
+#begin ButtonImages/Options3.png
+/copy:ButtonImages/Options3.png
+
+#begin ButtonImages/Quit1.png
+/copy:ButtonImages/Quit1.png
+
+#begin ButtonImages/Quit2.png
+/copy:ButtonImages/Quit2.png
+
+#begin ButtonImages/Quit3.png
+/copy:ButtonImages/Quit3.png
+
+#begin ButtonImages/Stats1.png
+/copy:ButtonImages/Stats1.png
+
+#begin ButtonImages/Stats2.png
+/copy:ButtonImages/Stats2.png
+
+#begin ButtonImages/Stats3.png
+/copy:ButtonImages/Stats3.png
+
+#begin ButtonImages/Tutorial1.png
+/copy:ButtonImages/Tutorial1.png
+
+#begin ButtonImages/Tutorial2.png
+/copy:ButtonImages/Tutorial2.png
+
+#begin ButtonImages/Tutorial3.png
+/copy:ButtonImages/Tutorial3.png
+
+#begin Effects/BEAM_END.png
+/copy:Effects/BEAM_END.png
+
+#begin Effects/CEXPLOSION.png
+/copy:Effects/CEXPLOSION.png
+
+#begin Effects/EMP.png
+/copy:Effects/EMP.png
+
+#begin Effects/EMP_BALL_EXP.png
+/copy:Effects/EMP_BALL_EXP.png
+
+#begin Effects/EMP_EXP.png
+/copy:Effects/EMP_EXP.png
+
+#begin Effects/EXPLOSION.png
+/copy:Effects/EXPLOSION.png
+
+#begin Effects/FIRE_BEAM_END.png
+/copy:Effects/FIRE_BEAM_END.png
+
+#begin Effects/LASER_EXP.png
+/copy:Effects/LASER_EXP.png
+
+#begin Effects/miniexp.png
+/copy:Effects/miniexp.png
+
+#begin Effects/PLASMA_EXP.png
+/copy:Effects/PLASMA_EXP.png
+
+#begin Effects/SPARKS.png
+/copy:Effects/SPARKS.png
+
+#begin Effects/VD_BR_EXP.png
+/copy:Effects/VD_BR_EXP.png
+
+#begin Effects/VD_DPL_EXP.png
+/copy:Effects/VD_DPL_EXP.png
+
+#begin Effects/VD_MELT_EXP.png
+/copy:Effects/VD_MELT_EXP.png
+
+#begin Effects/VD_MIS_EXP.png
+/copy:Effects/VD_MIS_EXP.png
+
+#begin Effects/VD_SL_EXP.png
+/copy:Effects/VD_SL_EXP.png
+
+#begin Effects/VD_SUF_EXP.png
+/copy:Effects/VD_SUF_EXP.png
+
+#begin Effects/W_A_EXP.png
+/copy:Effects/W_A_EXP.png
+
+#begin Effects/WISP_MINING_BEAM_END.png
+/copy:Effects/WISP_MINING_BEAM_END.png
+
+#begin MapIcons/0.png
+/copy:MapIcons/0.png
+
+#begin MapIcons/1.png
+/copy:MapIcons/1.png
+
+#begin MapIcons/10.png
+/copy:MapIcons/10.png
+
+#begin MapIcons/11.png
+/copy:MapIcons/11.png
+
+#begin MapIcons/12.png
+/copy:MapIcons/12.png
+
+#begin MapIcons/13.png
+/copy:MapIcons/13.png
+
+#begin MapIcons/14.png
+/copy:MapIcons/14.png
+
+#begin MapIcons/15.png
+/copy:MapIcons/15.png
+
+#begin MapIcons/16.png
+/copy:MapIcons/16.png
+
+#begin MapIcons/17.png
+/copy:MapIcons/17.png
+
+#begin MapIcons/18.png
+/copy:MapIcons/18.png
+
+#begin MapIcons/19.png
+/copy:MapIcons/19.png
+
+#begin MapIcons/2.png
+/copy:MapIcons/2.png
+
+#begin MapIcons/20.png
+/copy:MapIcons/20.png
+
+#begin MapIcons/21.png
+/copy:MapIcons/21.png
+
+#begin MapIcons/22.png
+/copy:MapIcons/22.png
+
+#begin MapIcons/23.png
+/copy:MapIcons/23.png
+
+#begin MapIcons/24.png
+/copy:MapIcons/24.png
+
+#begin MapIcons/25.png
+/copy:MapIcons/25.png
+
+#begin MapIcons/26.png
+/copy:MapIcons/26.png
+
+#begin MapIcons/27.png
+/copy:MapIcons/27.png
+
+#begin MapIcons/28.png
+/copy:MapIcons/28.png
+
+#begin MapIcons/29.png
+/copy:MapIcons/29.png
+
+#begin MapIcons/3.png
+/copy:MapIcons/3.png
+
+#begin MapIcons/30.png
+/copy:MapIcons/30.png
+
+#begin MapIcons/31.png
+/copy:MapIcons/31.png
+
+#begin MapIcons/32.png
+/copy:MapIcons/32.png
+
+#begin MapIcons/33.png
+/copy:MapIcons/33.png
+
+#begin MapIcons/34.png
+/copy:MapIcons/34.png
+
+#begin MapIcons/35.png
+/copy:MapIcons/35.png
+
+#begin MapIcons/36.png
+/copy:MapIcons/36.png
+
+#begin MapIcons/37.png
+/copy:MapIcons/37.png
+
+#begin MapIcons/4.png
+/copy:MapIcons/4.png
+
+#begin MapIcons/40.png
+/copy:MapIcons/40.png
+
+#begin MapIcons/41.png
+/copy:MapIcons/41.png
+
+#begin MapIcons/42.png
+/copy:MapIcons/42.png
+
+#begin MapIcons/43.png
+/copy:MapIcons/43.png
+
+#begin MapIcons/44.png
+/copy:MapIcons/44.png
+
+#begin MapIcons/45.png
+/copy:MapIcons/45.png
+
+#begin MapIcons/46.png
+/copy:MapIcons/46.png
+
+#begin MapIcons/5.png
+/copy:MapIcons/5.png
+
+#begin MapIcons/6.png
+/copy:MapIcons/6.png
+
+#begin MapIcons/7.png
+/copy:MapIcons/7.png
+
+#begin MapIcons/8.png
+/copy:MapIcons/8.png
+
+#begin MapIcons/9.png
+/copy:MapIcons/9.png
+
+#begin MouseIcon.png
+/copy:MouseIcon.png
+
+#begin Planets/nebula_large_a.png
+/copy:Planets/nebula_large_a.png
+
+#begin Planets/nebula_large_b.png
+/copy:Planets/nebula_large_b.png
+
+#begin Planets/nebula_large_c.png
+/copy:Planets/nebula_large_c.png
+
+#begin Planets/planet_bigblue.png
+/copy:Planets/planet_bigblue.png
+
+#begin Planets/planet_brown.png
+/copy:Planets/planet_brown.png
+
+#begin Planets/planet_gas_blue.png
+/copy:Planets/planet_gas_blue.png
+
+#begin Planets/planet_gas_blue2.png
+/copy:Planets/planet_gas_blue2.png
+
+#begin Planets/planet_gas_yellow.png
+/copy:Planets/planet_gas_yellow.png
+
+#begin Planets/planet_hell.png
+/copy:Planets/planet_hell.png
+
+#begin Planets/planet_peach.png
+/copy:Planets/planet_peach.png
+
+#begin Planets/planet_peach2.png
+/copy:Planets/planet_peach2.png
+
+#begin Planets/planet_populated_brown.png
+/copy:Planets/planet_populated_brown.png
+
+#begin Planets/planet_populated_dark.png
+/copy:Planets/planet_populated_dark.png
+
+#begin Planets/planet_populated_orange.png
+/copy:Planets/planet_populated_orange.png
+
+#begin Planets/planet_red.png
+/copy:Planets/planet_red.png
+
+#begin Planets/planet_sun1.png
+/copy:Planets/planet_sun1.png
+
+#begin Planets/planet_venus.png
+/copy:Planets/planet_venus.png
+
+#begin Planets/pulsar_black.png
+/copy:Planets/pulsar_black.png
+
+#begin Planets/pulsar_white.png
+/copy:Planets/pulsar_white.png
+
+#begin Planets/z_planet_city.png
+/copy:Planets/z_planet_city.png
+
+#begin Planets/z_planet_gas1.png
+/copy:Planets/z_planet_gas1.png
+
+#begin Planets/z_planet_gas1ring.png
+/copy:Planets/z_planet_gas1ring.png
+
+#begin Planets/z_planet_gas2ring.png
+/copy:Planets/z_planet_gas2ring.png
+
+#begin Planets/z_planet_gas3ring.png
+/copy:Planets/z_planet_gas3ring.png
+
+#begin Planets/z_planet_green.png
+/copy:Planets/z_planet_green.png
+
+#begin Planets/z_planet_techmoon.png
+/copy:Planets/z_planet_techmoon.png
+
+#begin Planets/z_planet_techmoon2.png
+/copy:Planets/z_planet_techmoon2.png
+
+#begin Projectiles/agland.png
+/copy:Projectiles/agland.png
+
+#begin Projectiles/AMISSILE.png
+/copy:Projectiles/AMISSILE.png
+
+#begin Projectiles/BEAM.png
+/copy:Projectiles/BEAM.png
+
+#begin Projectiles/blaser.png
+/copy:Projectiles/blaser.png
+
+#begin Projectiles/BLASTER_PROJ.png
+/copy:Projectiles/BLASTER_PROJ.png
+
+#begin Projectiles/BMISSILE.png
+/copy:Projectiles/BMISSILE.png
+
+#begin Projectiles/CMISSILE.png
+/copy:Projectiles/CMISSILE.png
+
+#begin Projectiles/CMISSILE2.png
+/copy:Projectiles/CMISSILE2.png
+
+#begin Projectiles/DPL.png
+/copy:Projectiles/DPL.png
+
+#begin Projectiles/DPL2.png
+/copy:Projectiles/DPL2.png
+
+#begin Projectiles/DPL3.png
+/copy:Projectiles/DPL3.png
+
+#begin Projectiles/EMISSILE.png
+/copy:Projectiles/EMISSILE.png
+
+#begin Projectiles/EMP_BALL.png
+/copy:Projectiles/EMP_BALL.png
+
+#begin Projectiles/EMP_BEAM.png
+/copy:Projectiles/EMP_BEAM.png
+
+#begin Projectiles/EMP_CHARGE.png
+/copy:Projectiles/EMP_CHARGE.png
+
+#begin Projectiles/EXTRACTOR100.png
+/copy:Projectiles/EXTRACTOR100.png
+
+#begin Projectiles/EXTRACTOR30.png
+/copy:Projectiles/EXTRACTOR30.png
+
+#begin Projectiles/EXTRACTOR50.png
+/copy:Projectiles/EXTRACTOR50.png
+
+#begin Projectiles/EXTRACTOR70.png
+/copy:Projectiles/EXTRACTOR70.png
+
+#begin Projectiles/EXTRACTOR90.png
+/copy:Projectiles/EXTRACTOR90.png
+
+#begin Projectiles/EXTRACTOR95.png
+/copy:Projectiles/EXTRACTOR95.png
+
+#begin Projectiles/EXTRACTOR99.png
+/copy:Projectiles/EXTRACTOR99.png
+
+#begin Projectiles/FIRE_BEAM.png
+/copy:Projectiles/FIRE_BEAM.png
+
+#begin Projectiles/galaser.png
+/copy:Projectiles/galaser.png
+
+#begin Projectiles/GAT_LASER.png
+/copy:Projectiles/GAT_LASER.png
+
+#begin Projectiles/glaser.png
+/copy:Projectiles/glaser.png
+
+#begin Projectiles/grenade.png
+/copy:Projectiles/grenade.png
+
+#begin Projectiles/HMISSILE.png
+/copy:Projectiles/HMISSILE.png
+
+#begin Projectiles/laser.png
+/copy:Projectiles/laser.png
+
+#begin Projectiles/LASER_CHARGE.png
+/copy:Projectiles/LASER_CHARGE.png
+
+#begin Projectiles/LASER_CHARGE2.png
+/copy:Projectiles/LASER_CHARGE2.png
+
+#begin Projectiles/MET.png
+/copy:Projectiles/MET.png
+
+#begin Projectiles/MET2.png
+/copy:Projectiles/MET2.png
+
+#begin Projectiles/mini_rocket.png
+/copy:Projectiles/mini_rocket.png
+
+#begin Projectiles/MISSILE.png
+/copy:Projectiles/MISSILE.png
+
+#begin Projectiles/NMISSILE.png
+/copy:Projectiles/NMISSILE.png
+
+#begin Projectiles/pgland.png
+/copy:Projectiles/pgland.png
+
+#begin Projectiles/plasma.png
+/copy:Projectiles/plasma.png
+
+#begin Projectiles/PLASMA_CHARGE.png
+/copy:Projectiles/PLASMA_CHARGE.png
+
+#begin Projectiles/PLASMA_CHARGE2.png
+/copy:Projectiles/PLASMA_CHARGE2.png
+
+#begin Projectiles/psi.png
+/copy:Projectiles/psi.png
+
+#begin Projectiles/qlaser.png
+/copy:Projectiles/qlaser.png
+
+#begin Projectiles/RAD_BEAM.png
+/copy:Projectiles/RAD_BEAM.png
+
+#begin Projectiles/RAIL_CHARGE.png
+/copy:Projectiles/RAIL_CHARGE.png
+
+#begin Projectiles/rlaser.png
+/copy:Projectiles/rlaser.png
+
+#begin Projectiles/ST1.png
+/copy:Projectiles/ST1.png
+
+#begin Projectiles/ST2.png
+/copy:Projectiles/ST2.png
+
+#begin Projectiles/ST3.png
+/copy:Projectiles/ST3.png
+
+#begin Projectiles/ST4.png
+/copy:Projectiles/ST4.png
+
+#begin Projectiles/swing.png
+/copy:Projectiles/swing.png
+
+#begin Projectiles/uvlaser.png
+/copy:Projectiles/uvlaser.png
+
+#begin Projectiles/VD_BEAM.png
+/copy:Projectiles/VD_BEAM.png
+
+#begin Projectiles/VD_BR.png
+/copy:Projectiles/VD_BR.png
+
+#begin Projectiles/VD_DPL.png
+/copy:Projectiles/VD_DPL.png
+
+#begin Projectiles/VD_LASER.png
+/copy:Projectiles/VD_LASER.png
+
+#begin Projectiles/VD_MELT.png
+/copy:Projectiles/VD_MELT.png
+
+#begin Projectiles/VD_MIN_BEAM.png
+/copy:Projectiles/VD_MIN_BEAM.png
+
+#begin Projectiles/VD_MIS.png
+/copy:Projectiles/VD_MIS.png
+
+#begin Projectiles/VD_SL.png
+/copy:Projectiles/VD_SL.png
+
+#begin Projectiles/VD_SUF.png
+/copy:Projectiles/VD_SUF.png
+
+#begin Projectiles/WHALE_PROJ1.png
+/copy:Projectiles/WHALE_PROJ1.png
+
+#begin Projectiles/WHALE_PROJ2.png
+/copy:Projectiles/WHALE_PROJ2.png
+
+#begin Projectiles/WISP_MINING_BEAM.png
+/copy:Projectiles/WISP_MINING_BEAM.png
+
+#begin Projectiles/xlaser.png
+/copy:Projectiles/xlaser.png
+
+#begin Shields/Blue.PNG
+/copy:Shields/Blue.PNG
+
+#begin Shields/White.png
+/copy:Shields/White.png
+
+#begin Ships/B_CARGO.png
+/copy:Ships/B_CARGO.png
+
+#begin Ships/B_CRUS.png
+/copy:Ships/B_CRUS.png
+
+#begin Ships/B_HS.png
+/copy:Ships/B_HS.png
+
+#begin Ships/B_INT.png
+/copy:Ships/B_INT.png
+
+#begin Ships/B_LS.png
+/copy:Ships/B_LS.png
+
+#begin Ships/CIV_H_CARGO.png
+/copy:Ships/CIV_H_CARGO.png
+
+#begin Ships/CIV_H_CRUS.png
+/copy:Ships/CIV_H_CRUS.png
+
+#begin Ships/CIV_LS_P.png
+/copy:Ships/CIV_LS_P.png
+
+#begin Ships/CRUS3.png
+/copy:Ships/CRUS3.png
+
+#begin Ships/CRUS4.png
+/copy:Ships/CRUS4.png
+
+#begin Ships/DF.png
+/copy:Ships/DF.png
+
+#begin Ships/Empire1.png
+/copy:Ships/Empire1.png
+
+#begin Ships/Empire2.png
+/copy:Ships/Empire2.png
+
+#begin Ships/EmpireCargo1.png
+/copy:Ships/EmpireCargo1.png
+
+#begin Ships/EmpireCargo2.png
+/copy:Ships/EmpireCargo2.png
+
+#begin Ships/EmpireCargo3.png
+/copy:Ships/EmpireCargo3.png
+
+#begin Ships/EmpireScout1.png
+/copy:Ships/EmpireScout1.png
+
+#begin Ships/EmpireScout2.png
+/copy:Ships/EmpireScout2.png
+
+#begin Ships/EmpireScout3.png
+/copy:Ships/EmpireScout3.png
+
+#begin Ships/H_CARGO.png
+/copy:Ships/H_CARGO.png
+
+#begin Ships/H_CRUS.png
+/copy:Ships/H_CRUS.png
+
+#begin Ships/H_LS.png
+/copy:Ships/H_LS.png
+
+#begin Ships/HS1.png
+/copy:Ships/HS1.png
+
+#begin Ships/HS2.png
+/copy:Ships/HS2.png
+
+#begin Ships/HS5.png
+/copy:Ships/HS5.png
+
+#begin Ships/I_CARGO.png
+/copy:Ships/I_CARGO.png
+
+#begin Ships/I_CRUS.png
+/copy:Ships/I_CRUS.png
+
+#begin Ships/I_HS.png
+/copy:Ships/I_HS.png
+
+#begin Ships/I_INT.png
+/copy:Ships/I_INT.png
+
+#begin Ships/I_LS.png
+/copy:Ships/I_LS.png
+
+#begin Ships/INT1.png
+/copy:Ships/INT1.png
+
+#begin Ships/INT2.png
+/copy:Ships/INT2.png
+
+#begin Ships/K_CARGO.png
+/copy:Ships/K_CARGO.png
+
+#begin Ships/K_CRUS.png
+/copy:Ships/K_CRUS.png
+
+#begin Ships/K_HS.png
+/copy:Ships/K_HS.png
+
+#begin Ships/K_INT.png
+/copy:Ships/K_INT.png
+
+#begin Ships/K_LS.png
+/copy:Ships/K_LS.png
+
+#begin Ships/LS1.png
+/copy:Ships/LS1.png
+
+#begin Ships/LS2.png
+/copy:Ships/LS2.png
+
+#begin Ships/LS4.png
+/copy:Ships/LS4.png
+
+#begin Ships/PIRATE_RED_LS.png
+/copy:Ships/PIRATE_RED_LS.png
+
+#begin Ships/POD.png
+/copy:Ships/POD.png
+
+#begin Ships/RAI_LS2.png
+/copy:Ships/RAI_LS2.png
+
+#begin Ships/S_CARGO.png
+/copy:Ships/S_CARGO.png
+
+#begin Ships/S_CRUS.png
+/copy:Ships/S_CRUS.png
+
+#begin Ships/S_HS.png
+/copy:Ships/S_HS.png
+
+#begin Ships/S_INT.png
+/copy:Ships/S_INT.png
+
+#begin Ships/S_LS.png
+/copy:Ships/S_LS.png
+
+#begin Ships/Stolen_H_CRUS_J.png
+/copy:Ships/Stolen_H_CRUS_J.png
+
+#begin Stations/PRIS.png
+/copy:Stations/PRIS.png
+
+#begin Stations/SINGU.png
+/copy:Stations/SINGU.png
+
+#begin Stations/STATION01.png
+/copy:Stations/STATION01.png
+
+#begin Stations/STATION02.png
+/copy:Stations/STATION02.png
+
+#begin Stations/STATION03.png
+/copy:Stations/STATION03.png
+
+#begin Stations/STATION04.png
+/copy:Stations/STATION04.png
+
+#begin Stations/STATION05.png
+/copy:Stations/STATION05.png
+
+#begin Stations/STATION06.png
+/copy:Stations/STATION06.png
+
+#begin Stations/STATION07.png
+/copy:Stations/STATION07.png
+
+#begin Stations/STATION08.png
+/copy:Stations/STATION08.png
+
+#begin Stations/STATION09.png
+/copy:Stations/STATION09.png
+
+#begin Stations/STATION10.png
+/copy:Stations/STATION10.png
+
+#begin Stations/STATION11.png
+/copy:Stations/STATION11.png
+
+#begin Weapons/AMIS.png
+/copy:Weapons/AMIS.png
+
+#begin Weapons/BBC.png
+/copy:Weapons/BBC.png
+
+#begin Weapons/BMIS.png
+/copy:Weapons/BMIS.png
+
+#begin Weapons/CAN_OPENER.png
+/copy:Weapons/CAN_OPENER.png
+
+#begin Weapons/CLUSTER_ML.png
+/copy:Weapons/CLUSTER_ML.png
+
+#begin Weapons/DMIS.png
+/copy:Weapons/DMIS.png
+
+#begin Weapons/DPL.png
+/copy:Weapons/DPL.png
+
+#begin Weapons/EJECTOR.png
+/copy:Weapons/EJECTOR.png
+
+#begin Weapons/ELASER.png
+/copy:Weapons/ELASER.png
+
+#begin Weapons/EMIS.png
+/copy:Weapons/EMIS.png
+
+#begin Weapons/EMP_BEAM.png
+/copy:Weapons/EMP_BEAM.png
+
+#begin Weapons/EMP1-1.png
+/copy:Weapons/EMP1-1.png
+
+#begin Weapons/EMP1-2.png
+/copy:Weapons/EMP1-2.png
+
+#begin Weapons/EMP1-3.png
+/copy:Weapons/EMP1-3.png
+
+#begin Weapons/EMP1-4.png
+/copy:Weapons/EMP1-4.png
+
+#begin Weapons/EMP1-5.png
+/copy:Weapons/EMP1-5.png
+
+#begin Weapons/EMP2-1.png
+/copy:Weapons/EMP2-1.png
+
+#begin Weapons/EMP2-2.png
+/copy:Weapons/EMP2-2.png
+
+#begin Weapons/EMP2-3.png
+/copy:Weapons/EMP2-3.png
+
+#begin Weapons/EMP2-4.png
+/copy:Weapons/EMP2-4.png
+
+#begin Weapons/EMP2-5.png
+/copy:Weapons/EMP2-5.png
+
+#begin Weapons/EMP3-1.png
+/copy:Weapons/EMP3-1.png
+
+#begin Weapons/EMP3-2.png
+/copy:Weapons/EMP3-2.png
+
+#begin Weapons/EMP3-3.png
+/copy:Weapons/EMP3-3.png
+
+#begin Weapons/EMP3-4.png
+/copy:Weapons/EMP3-4.png
+
+#begin Weapons/EMP3-5.png
+/copy:Weapons/EMP3-5.png
+
+#begin Weapons/EMP4-1.png
+/copy:Weapons/EMP4-1.png
+
+#begin Weapons/EMP4-2.png
+/copy:Weapons/EMP4-2.png
+
+#begin Weapons/EMP4-3.png
+/copy:Weapons/EMP4-3.png
+
+#begin Weapons/EMP4-4.png
+/copy:Weapons/EMP4-4.png
+
+#begin Weapons/EMP4-5.png
+/copy:Weapons/EMP4-5.png
+
+#begin Weapons/EMPRAIL1.png
+/copy:Weapons/EMPRAIL1.png
+
+#begin Weapons/EMPTY.png
+/copy:Weapons/EMPTY.png
+
+#begin Weapons/EXTRACTOR.png
+/copy:Weapons/EXTRACTOR.png
+
+#begin Weapons/FIRE_BEAM.png
+/copy:Weapons/FIRE_BEAM.png
+
+#begin Weapons/GAT_LASER.png
+/copy:Weapons/GAT_LASER.png
+
+#begin Weapons/HLASER1-1.png
+/copy:Weapons/HLASER1-1.png
+
+#begin Weapons/HLASER1-2.png
+/copy:Weapons/HLASER1-2.png
+
+#begin Weapons/HLASER1-3.png
+/copy:Weapons/HLASER1-3.png
+
+#begin Weapons/HLASER1-4.png
+/copy:Weapons/HLASER1-4.png
+
+#begin Weapons/HLASER1-5.png
+/copy:Weapons/HLASER1-5.png
+
+#begin Weapons/HLASER2-1.png
+/copy:Weapons/HLASER2-1.png
+
+#begin Weapons/HLASER2-2.png
+/copy:Weapons/HLASER2-2.png
+
+#begin Weapons/HLASER2-3.png
+/copy:Weapons/HLASER2-3.png
+
+#begin Weapons/HLASER2-4.png
+/copy:Weapons/HLASER2-4.png
+
+#begin Weapons/HLASER2-5.png
+/copy:Weapons/HLASER2-5.png
+
+#begin Weapons/HMIS.png
+/copy:Weapons/HMIS.png
+
+#begin Weapons/HULL_BEAM.png
+/copy:Weapons/HULL_BEAM.png
+
+#begin Weapons/LASER1-1.png
+/copy:Weapons/LASER1-1.png
+
+#begin Weapons/LASER1-2.png
+/copy:Weapons/LASER1-2.png
+
+#begin Weapons/LASER1-3.png
+/copy:Weapons/LASER1-3.png
+
+#begin Weapons/LASER1-4.png
+/copy:Weapons/LASER1-4.png
+
+#begin Weapons/LASER1-5.png
+/copy:Weapons/LASER1-5.png
+
+#begin Weapons/LASER2-1.png
+/copy:Weapons/LASER2-1.png
+
+#begin Weapons/LASER2-2.png
+/copy:Weapons/LASER2-2.png
+
+#begin Weapons/LASER2-3.png
+/copy:Weapons/LASER2-3.png
+
+#begin Weapons/LASER2-4.png
+/copy:Weapons/LASER2-4.png
+
+#begin Weapons/LASER2-5.png
+/copy:Weapons/LASER2-5.png
+
+#begin Weapons/LASER3-1.png
+/copy:Weapons/LASER3-1.png
+
+#begin Weapons/LASER3-2.png
+/copy:Weapons/LASER3-2.png
+
+#begin Weapons/LASER3-3.png
+/copy:Weapons/LASER3-3.png
+
+#begin Weapons/LASER3-4.png
+/copy:Weapons/LASER3-4.png
+
+#begin Weapons/LASER3-5.png
+/copy:Weapons/LASER3-5.png
+
+#begin Weapons/LASER4-1.png
+/copy:Weapons/LASER4-1.png
+
+#begin Weapons/LASER4-2.png
+/copy:Weapons/LASER4-2.png
+
+#begin Weapons/LASER4-3.png
+/copy:Weapons/LASER4-3.png
+
+#begin Weapons/LASER4-4.png
+/copy:Weapons/LASER4-4.png
+
+#begin Weapons/LASER4-5.png
+/copy:Weapons/LASER4-5.png
+
+#begin Weapons/MIS.png
+/copy:Weapons/MIS.png
+
+#begin Weapons/NLASER1-1.png
+/copy:Weapons/NLASER1-1.png
+
+#begin Weapons/NLASER1-2.png
+/copy:Weapons/NLASER1-2.png
+
+#begin Weapons/NLASER1-3.png
+/copy:Weapons/NLASER1-3.png
+
+#begin Weapons/NLASER1-4.png
+/copy:Weapons/NLASER1-4.png
+
+#begin Weapons/NLASER1-5.png
+/copy:Weapons/NLASER1-5.png
+
+#begin Weapons/NLASER2-1.png
+/copy:Weapons/NLASER2-1.png
+
+#begin Weapons/NLASER2-2.png
+/copy:Weapons/NLASER2-2.png
+
+#begin Weapons/NLASER2-3.png
+/copy:Weapons/NLASER2-3.png
+
+#begin Weapons/NLASER2-4.png
+/copy:Weapons/NLASER2-4.png
+
+#begin Weapons/NLASER2-5.png
+/copy:Weapons/NLASER2-5.png
+
+#begin Weapons/NMIS.png
+/copy:Weapons/NMIS.png
+
+#begin Weapons/PLASER-1.png
+/copy:Weapons/PLASER-1.png
+
+#begin Weapons/PLASER-2.png
+/copy:Weapons/PLASER-2.png
+
+#begin Weapons/PLASER-3.png
+/copy:Weapons/PLASER-3.png
+
+#begin Weapons/PLASER-4.png
+/copy:Weapons/PLASER-4.png
+
+#begin Weapons/PLASER-5.png
+/copy:Weapons/PLASER-5.png
+
+#begin Weapons/PLASMA_CUTTER.png
+/copy:Weapons/PLASMA_CUTTER.png
+
+#begin Weapons/PLASMA1-1.png
+/copy:Weapons/PLASMA1-1.png
+
+#begin Weapons/PLASMA1-2.png
+/copy:Weapons/PLASMA1-2.png
+
+#begin Weapons/PLASMA1-3.png
+/copy:Weapons/PLASMA1-3.png
+
+#begin Weapons/PLASMA1-4.png
+/copy:Weapons/PLASMA1-4.png
+
+#begin Weapons/PLASMA1-5.png
+/copy:Weapons/PLASMA1-5.png
+
+#begin Weapons/PLASMA2-1.png
+/copy:Weapons/PLASMA2-1.png
+
+#begin Weapons/PLASMA2-2.png
+/copy:Weapons/PLASMA2-2.png
+
+#begin Weapons/PLASMA2-3.png
+/copy:Weapons/PLASMA2-3.png
+
+#begin Weapons/PLASMA2-4.png
+/copy:Weapons/PLASMA2-4.png
+
+#begin Weapons/PLASMA2-5.png
+/copy:Weapons/PLASMA2-5.png
+
+#begin Weapons/RAD_BEAM.png
+/copy:Weapons/RAD_BEAM.png
+
+#begin Weapons/RAIL1-1.png
+/copy:Weapons/RAIL1-1.png
+
+#begin Weapons/RAIL1-2.png
+/copy:Weapons/RAIL1-2.png
+
+#begin Weapons/RAIL1-3.png
+/copy:Weapons/RAIL1-3.png
+
+#begin Weapons/RAIL1-4.png
+/copy:Weapons/RAIL1-4.png
+
+#begin Weapons/RAIL1-5.png
+/copy:Weapons/RAIL1-5.png
+
+#begin Weapons/VD_BEAM.png
+/copy:Weapons/VD_BEAM.png
+
+#begin Weapons/VD_BL.png
+/copy:Weapons/VD_BL.png
+
+#begin Weapons/VD_DPL.png
+/copy:Weapons/VD_DPL.png
+
+#begin Weapons/VD_ELASER.png
+/copy:Weapons/VD_ELASER.png
+
+#begin Weapons/VD_G.png
+/copy:Weapons/VD_G.png
+
+#begin Weapons/VD_SL.png
+/copy:Weapons/VD_SL.png
+
+#begin Whales/WHALE1.png
+/copy:Whales/WHALE1.png
+
+#begin Whales/WHALE2.png
+/copy:Whales/WHALE2.png
+
+#begin Whales/WHALE3.png
+/copy:Whales/WHALE3.png
 

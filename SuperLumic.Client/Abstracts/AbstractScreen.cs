@@ -2,9 +2,9 @@
 
 namespace SuperLumic.Abstracts
 {
-    internal class AbstractScreen : AbstractUIElement
+    public class AbstractScreen : AbstractUIElement
     {
-        protected AbstractScreen(SuperLumic game, double x, double y, double width, double height) : base(game, x, y, width, height, SuperLumic.ScreenLayer, SuperLumic.ScreenLayer)
+        protected AbstractScreen(object Parent) : base(Parent, 0, 0, 1, 1, SuperLumic.ScreenLayer, SuperLumic.ScreenLayer)
         {
         }
 
@@ -16,6 +16,16 @@ namespace SuperLumic.Abstracts
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+        }
+
+        protected override void LoadContent()
+        {
+            base.LoadContent();
+        }
+
+        protected override void UnloadContent()
+        {
+            base.UnloadContent();
         }
     }
 }

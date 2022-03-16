@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace SuperLumic.Abstracts
 {
@@ -7,6 +9,7 @@ namespace SuperLumic.Abstracts
     {
         public new SuperLumic Game;
         public double Height;
+        public object Parent;
         public double Width;
         public double X;
         public double Y;
@@ -14,9 +17,10 @@ namespace SuperLumic.Abstracts
         private float EndLayer;
         private float StartLayer;
 
-        protected AbstractUIElement(SuperLumic game, double x, double y, double width, double height, float startLayer, float endLayer) : base(game)
+        protected AbstractUIElement(object Parent, double x, double y, double width, double height, float startLayer, float endLayer) : base(SuperLumic.Instance)
         {
-            Game = game;
+            Game = SuperLumic.Instance;
+            this.Parent = Parent;
             X = x;
             Y = y;
             Width = width;
@@ -25,47 +29,75 @@ namespace SuperLumic.Abstracts
             EndLayer = endLayer;
         }
 
-        public void Draw(Texture2D Texture, double x, double y, double width, double height, Vector2 Origin, float Rotation, Color color, SpriteEffects effect, double LayerDepth)
+        public double RealHeight
+        {
+            get
+            {
+                if (Parent is SuperLumic SuperLumic)
+                {
+                    return Height * SuperLumic.Height;
+                }
+                else if (Parent is AbstractUIElement element)
+                {
+                    return Height * element.RealHeight;
+                }
+                return 0;
+            }
+        }
+
+        public double RealWidth
+        {
+            get
+            {
+                if (Parent is SuperLumic SuperLumic)
+                {
+                    return Width * SuperLumic.Width;
+                }
+                else if (Parent is AbstractUIElement element)
+                {
+                    return Width * element.RealWidth;
+                }
+                return 0;
+            }
+        }
+
+        public void Draw(Texture2D Texture, double x, double y, double width, double height, Vector2 Origin, float Rotation, Color TintColor, SpriteEffects effect, double LayerDepth)
         {
             CurrentLayerWidth += .01;
             float AdjustedLayerDepth = (float)((EndLayer - StartLayer) * LayerDepth + StartLayer);
-            int X = (int)(this.X * SuperLumic.Width);
-            int Y = (int)(this.Y * SuperLumic.Height);
-            int Height = (int)(this.Height * SuperLumic.Height);
-            int Width = (int)(this.Width * SuperLumic.Width);
-            Rectangle DestinationRectangle = new Rectangle((int)(x * width + X), (int)(y * height + Y), (int)(width * Width), (int)(height * Height));
-            Origin = new Vector2((float)(Origin.X * Width + X), (float)(Origin.Y * Height + Y));
-            Game.SpriteBatch.Draw(Texture, DestinationRectangle, new Rectangle(0, 0, Texture.Width, Texture.Height), color, Rotation, Origin, SpriteEffects.None, AdjustedLayerDepth);
+            Rectangle DestinationRectangle = new Rectangle((int)(x * RealWidth + X * RealWidth), (int)(y * RealHeight + Y * RealHeight), (int)(width * RealWidth), (int)(height * RealHeight));
+            Origin = new Vector2((float)(Origin.X * Width * RealWidth + X * RealWidth), (float)(Origin.Y * Height * RealHeight + Y * RealHeight));
+            Game.Draw(Texture, DestinationRectangle, new Rectangle(0, 0, Texture.Width, Texture.Height), TintColor, Rotation, Origin, SpriteEffects.None, AdjustedLayerDepth);
         }
 
-        public void Draw(Texture2D Texture, double x, double y, double width, double height, Color color, SpriteEffects effect, double LayerDepth)
+        public void Draw(Texture2D Texture, double x, double y, double width, double height, Color TintColor, SpriteEffects effect, double LayerDepth)
         {
-            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, color, effect, LayerDepth);
+            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, TintColor, effect, LayerDepth);
         }
 
-        public void Draw(Texture2D Texture, double x, double y, double width, double height, Color color, double LayerDepth)
+        public void Draw(Texture2D Texture, double x, double y, double width, double height, Color TintColor, double LayerDepth)
         {
-            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, color, SpriteEffects.None, LayerDepth);
+            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, TintColor, SpriteEffects.None, LayerDepth);
         }
 
-        public void Draw(Texture2D Texture, double x, double y, double width, double height, Color color, SpriteEffects effect)
+        public void Draw(Texture2D Texture, double x, double y, double width, double height, Color TintColor, SpriteEffects effect)
         {
-            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, color, effect, CurrentLayerWidth);
+            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, TintColor, effect, CurrentLayerWidth);
         }
 
-        public void Draw(Texture2D Texture, double x, double y, double width, double height, Color color)
+        public void Draw(Texture2D Texture, double x, double y, double width, double height, Color TintColor)
         {
-            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, color, SpriteEffects.None, CurrentLayerWidth);
+            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, TintColor, SpriteEffects.None, CurrentLayerWidth);
         }
 
         public void Draw(Texture2D Texture, double x, double y, double width, double height)
         {
-            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, Color.Transparent, SpriteEffects.None, CurrentLayerWidth);
+            Draw(Texture, x, y, width, height, new Vector2(0, 0), 0, Color.White, SpriteEffects.None, CurrentLayerWidth);
         }
 
         public void Draw(Texture2D Texture)
         {
-            Draw(Texture, 0, 0, 1, 1, new Vector2(0, 0), 0, Color.Transparent, SpriteEffects.None, CurrentLayerWidth);
+            Draw(Texture, 0, 0, 1, 1, new Vector2(0, 0), 0, Color.White, SpriteEffects.None, CurrentLayerWidth);
         }
 
         public override void Draw(GameTime gameTime)
@@ -74,9 +106,74 @@ namespace SuperLumic.Abstracts
             CurrentLayerWidth = 0;
         }
 
+        public void DrawRawHeightWidth(Texture2D Texture, double x, double y, int width, int height)
+        {
+            DrawRawHeightWidth(Texture, x, y, width, height, new Vector2(0, 0), 0, Color.White, SpriteEffects.None, CurrentLayerWidth);
+        }
+
+        public void DrawRawHeightWidth(Texture2D Texture, double x, double y, int width, int height, Vector2 Origin, float Rotation, Color TintColor, SpriteEffects effect, double LayerDepth)
+        {
+            CurrentLayerWidth += .01;
+            float AdjustedLayerDepth = (float)((EndLayer - StartLayer) * LayerDepth + StartLayer);
+            Rectangle DestinationRectangle = new Rectangle((int)(x * RealWidth + X * RealWidth), (int)(y * RealHeight + Y * RealHeight), width, height);
+            Origin = new Vector2((float)(Origin.X + X * RealWidth), (float)(Origin.Y + Y * RealHeight));
+            Game.Draw(Texture, DestinationRectangle, new Rectangle(0, 0, Texture.Width, Texture.Height), TintColor, Rotation, Origin, SpriteEffects.None, AdjustedLayerDepth);
+        }
+
+        public void DrawRawHeightWidth(Texture2D Texture, double x, double y, int width, int height, Color TintColor, SpriteEffects effect, double LayerDepth)
+        {
+            DrawRawHeightWidth(Texture, x, y, width, height, new Vector2(0, 0), 0, TintColor, effect, LayerDepth);
+        }
+
+        public void DrawRawHeightWidth(Texture2D Texture, double x, double y, int width, int height, Color TintColor, double LayerDepth)
+        {
+            DrawRawHeightWidth(Texture, x, y, width, height, new Vector2(0, 0), 0, TintColor, SpriteEffects.None, LayerDepth);
+        }
+
+        public void DrawRawHeightWidth(Texture2D Texture, double x, double y, int width, int height, Color TintColor, SpriteEffects effect)
+        {
+            DrawRawHeightWidth(Texture, x, y, width, height, new Vector2(0, 0), 0, TintColor, effect, CurrentLayerWidth);
+        }
+
+        public void DrawRawHeightWidth(Texture2D Texture, double x, double y, int width, int height, Color TintColor)
+        {
+            DrawRawHeightWidth(Texture, x, y, width, height, new Vector2(0, 0), 0, TintColor, SpriteEffects.None, CurrentLayerWidth);
+        }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+        }
+
+        internal Tuple<double, double> GetMousePosition()
+        {
+            int X = (int)(this.X * SuperLumic.Width);
+            int Y = (int)((1 - this.Y) * SuperLumic.Height);
+            int Height = (int)RealHeight;
+            int Width = (int)RealWidth;
+            Vector2 Position = Mouse.GetState().Position.ToVector2();
+            if (Position.X > X && Position.X < X + Width && Position.Y < Y && Position.Y > Y - Height)
+            {
+                return new Tuple<double, double>((Position.X - X) / Width, 1 + ((Position.Y - Y) / Height));
+            }
+            return new Tuple<double, double>(-1, -1);// not in the area, return -1,-1
+        }
+
+        protected override void LoadContent()
+        {
+            base.LoadContent();
+        }
+
+        protected override void UnloadContent()
+        {
+            base.UnloadContent();
+        }
+
+        private bool IsMouseWithinElement()
+        {
+            if (GetMousePosition().Item1 == -1)
+                return false;
+            return true;
         }
     }
 }
