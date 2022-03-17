@@ -43,8 +43,10 @@ namespace SuperLumic
         public Tuple<int, int> MouseSize;
         public ScreenManager ScreenManager;
         public SpriteBatch SpriteBatch;
-        private Texture2D Background;
+        private Texture2D Background; 
+        private Texture2D BlackImage;
         private int PillarBoxXOffset = 0;
+        private int PillarBoxYOffset = 0;
         private List<AbstractPopup> PopupsStack = new List<AbstractPopup>();
         private List<AbstractScreen> ScreenStack = new List<AbstractScreen>();
 
@@ -115,7 +117,8 @@ namespace SuperLumic
 
         internal void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle rectangle, Color tintColor, float rotation, Vector2 origin, SpriteEffects none, float adjustedLayerDepth)
         {
-            destinationRectangle.X = destinationRectangle.X + PillarBoxXOffset;
+            destinationRectangle.X += PillarBoxXOffset;
+            destinationRectangle.Y += PillarBoxYOffset;
             SpriteBatch.Draw(texture, destinationRectangle, rectangle, tintColor, rotation, origin, none, adjustedLayerDepth);
         }
 
@@ -134,7 +137,8 @@ namespace SuperLumic
             GraphicsDevice.Clear(Color.Black);
             RefreshPillarBoxes();
             MouseSize = new Tuple<int, int>(16, 16);
-            SpriteBatch.Begin(SpriteSortMode.FrontToBack);
+            SpriteBatch.Begin(SpriteSortMode.FrontToBack,BlendState.NonPremultiplied);
+            Draw(BlackImage, new Rectangle(0, 0, (int)Width, (int)Height), new Rectangle(1, 1, 1, 1), Color.White, 0, new Vector2(0, 0), SpriteEffects.None, 0);
             base.Draw(gameTime);
             SpriteBatch.End();
         }
@@ -158,6 +162,7 @@ namespace SuperLumic
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             Background = TextureManager.Get("Backgrounds\\bg_lonelyBlueStar.png");
+            BlackImage = TextureManager.Get("Black.png");
         }
 
         /// <summary>
@@ -202,12 +207,9 @@ namespace SuperLumic
             int ActualWidth = GraphicsDevice.PresentationParameters.BackBufferWidth;
             Rectangle AspectRatio = new Rectangle(0, 0, 16, 9);
             Rectangle WindowRectangle = new Rectangle(0, 0, ActualWidth, ActualHeight);
-            double scale = (WindowRectangle.Width / AspectRatio.Width);
-            if (AspectRatio.Height * scale > WindowRectangle.Height)
-                scale = WindowRectangle.Height / AspectRatio.Height;
-            AspectRatio.Width = (int)(AspectRatio.Width * scale);
-            AspectRatio.Height = (int)(AspectRatio.Height * scale);
+            AspectRatio = AspectRatio.ScaleRectToFit(WindowRectangle);
             PillarBoxXOffset = (int)((WindowRectangle.Width - AspectRatio.Width) / 2);
+            PillarBoxYOffset = (int)((WindowRectangle.Height - AspectRatio.Height) / 2);
             Height = AspectRatio.Height;
             Width = AspectRatio.Width;
         }

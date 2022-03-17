@@ -161,6 +161,9 @@
 #begin Backgrounds/z_bg_xandra_01.png
 /copy:Backgrounds/z_bg_xandra_01.png
 
+#begin Black.png
+/copy:Black.png
+
 #begin ButtonImages/Continue1.png
 /copy:ButtonImages/Continue1.png
 
@@ -178,6 +181,24 @@
 
 #begin ButtonImages/Credits3.png
 /copy:ButtonImages/Credits3.png
+
+#begin ButtonImages/Host1.png
+/copy:ButtonImages/Host1.png
+
+#begin ButtonImages/Host2.png
+/copy:ButtonImages/Host2.png
+
+#begin ButtonImages/Host3.png
+/copy:ButtonImages/Host3.png
+
+#begin ButtonImages/Join1.png
+/copy:ButtonImages/Join1.png
+
+#begin ButtonImages/Join2.png
+/copy:ButtonImages/Join2.png
+
+#begin ButtonImages/Join3.png
+/copy:ButtonImages/Join3.png
 
 #begin ButtonImages/Multiplayer1.png
 /copy:ButtonImages/Multiplayer1.png
@@ -892,6 +913,9 @@
 
 #begin Stations/STATION11.png
 /copy:Stations/STATION11.png
+
+#begin SuperLumicText.png
+/copy:SuperLumicText.png
 
 #begin Weapons/AMIS.png
 /copy:Weapons/AMIS.png

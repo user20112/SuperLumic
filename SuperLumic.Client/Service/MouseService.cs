@@ -1,24 +1,37 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using SuperLumic.Abstracts;
 using SuperLumic.Content;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace SuperLumic.Service
 {
-    public enum MouseStateEnum
+    public enum MouseIconStateEnum
     {
         Idle
+    }
+    public enum MouseButtonStateEnum
+    {
+        None,
+        Clicked,
+        Held
     }
 
     public class MouseService : AbstractUIElement
     {
+        public static Tuple<double, double> CurrentMousePosition = new Tuple<double, double>(0, 0);
+        public static MouseButtonStateEnum M1State = MouseButtonStateEnum.None;
+        public static MouseButtonStateEnum M2State = MouseButtonStateEnum.None;
         public static MouseService Instance;
-        private List<Tuple<float, MouseStateEnum, Guid>> CurrentStateRequests = new List<Tuple<float, MouseStateEnum, Guid>>();
+        private List<Tuple<float, MouseIconStateEnum, Guid>> CurrentStateRequests = new List<Tuple<float, MouseIconStateEnum, Guid>>();
         private Texture2D MouseIcon;
-        private Dictionary<MouseStateEnum, Texture2D> MouseIcons = new Dictionary<MouseStateEnum, Texture2D>();
+        private Dictionary<MouseIconStateEnum, Texture2D> MouseIcons = new Dictionary<MouseIconStateEnum, Texture2D>();
         private Tuple<double, double> MousePosition;
+        public static long M1HoldTime = 0;
+        public static long M2HoldTime = 0;
 
         public MouseService() : base(SuperLumic.Instance, 0, 0, 1, 1, SuperLumic.MouseLayer, SuperLumic.MouseLayer)
         {
@@ -51,29 +64,100 @@ namespace SuperLumic.Service
             }
         }
 
-        public void RequestMouseStateRequest(float Layer, MouseStateEnum RequestedState, Guid RequestingObjectGUID)
+        public void RequestMouseStateRequest(float Layer, MouseIconStateEnum RequestedState, Guid RequestingObjectGUID)
         {
-            CurrentStateRequests.Add(new Tuple<float, MouseStateEnum, Guid>(Layer, RequestedState, RequestingObjectGUID));
+            CurrentStateRequests.Add(new Tuple<float, MouseIconStateEnum, Guid>(Layer, RequestedState, RequestingObjectGUID));
             if (CurrentStateRequests[0].Item1 < Layer)
             {
                 ReEvaluateMouseIcon();
             }
         }
-
+        Stopwatch M1StopWatch = new Stopwatch();
+        Stopwatch M2StopWatch = new Stopwatch();
+        MouseState? M1OnClickMouseState;
+        MouseState? M2OnClickMouseState;
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            MousePosition = GetMousePosition();
+            if (SuperLumic.Instance.IsActive)
+            {
+                MousePosition = GetMousePosition();
+                MouseState mousestate = Mouse.GetState();
+                switch (mousestate.LeftButton)
+                {
+                    case ButtonState.Pressed:
+                        if (M1OnClickMouseState == null)
+                        {
+                            M1OnClickMouseState = mousestate;
+                            M1StopWatch.Start();
+                        }
+                        else
+                        {
+                            if (M1StopWatch.ElapsedMilliseconds > 150)
+                            {
+                                M1State = MouseButtonStateEnum.Held;
+                                M1HoldTime = M1StopWatch.ElapsedMilliseconds;
+                            }
+                        }
+                        break;
+                    case ButtonState.Released:
+                        if (M1State == MouseButtonStateEnum.None)
+                        {
+                            if (M1StopWatch.ElapsedMilliseconds <= 150)
+                            {
+                                M1State = MouseButtonStateEnum.Clicked;
+                            }
+                        }
+                        else
+                        {
+                            M1State = MouseButtonStateEnum.None;
+                        }
+                        M1OnClickMouseState = null;
+                        break;
+                }
+                switch (mousestate.RightButton)
+                {
+                    case ButtonState.Pressed:
+                        if (M2OnClickMouseState == null)
+                        {
+                            M2OnClickMouseState = mousestate;
+                            M2StopWatch.Start();
+                        }
+                        else
+                        {
+                            if (M2StopWatch.ElapsedMilliseconds > 150)
+                            {
+                                M2State = MouseButtonStateEnum.Held;
+                                M2HoldTime = M2StopWatch.ElapsedMilliseconds;
+                            }
+                        }
+                        break;
+                    case ButtonState.Released:
+                        if (M2State == MouseButtonStateEnum.None)
+                        {
+                            if (M2StopWatch.ElapsedMilliseconds <= 150)
+                            {
+                                M2State = MouseButtonStateEnum.Clicked;
+                            }
+                        }
+                        else
+                        {
+                            M2State = MouseButtonStateEnum.None;
+                        }
+                        M2OnClickMouseState = null;
+                        break;
+                }
+            }
         }
 
         protected override void LoadContent()
         {
             MouseIcon = TextureManager.Get("MouseIcon.png");
-            MouseIcons.Add(MouseStateEnum.Idle, TextureManager.Get("MouseIcon.png"));
+            MouseIcons.Add(MouseIconStateEnum.Idle, TextureManager.Get("MouseIcon.png"));
             base.LoadContent();
         }
 
-        private int ComparerFunction(Tuple<float, MouseStateEnum, Guid> x, Tuple<float, MouseStateEnum, Guid> y)
+        private int ComparerFunction(Tuple<float, MouseIconStateEnum, Guid> x, Tuple<float, MouseIconStateEnum, Guid> y)
         {
             return x.Item1.CompareTo(y.Item1);
         }
@@ -85,12 +169,12 @@ namespace SuperLumic.Service
             {
                 if (!MouseIcons.TryGetValue(CurrentStateRequests[0].Item2, out MouseIcon))
                 {
-                    MouseIcons.TryGetValue(MouseStateEnum.Idle, out MouseIcon);
+                    MouseIcons.TryGetValue(MouseIconStateEnum.Idle, out MouseIcon);
                 }
             }
             else
             {
-                MouseIcons.TryGetValue(MouseStateEnum.Idle, out MouseIcon);
+                MouseIcons.TryGetValue(MouseIconStateEnum.Idle, out MouseIcon);
             }
         }
     }

@@ -50,14 +50,18 @@
     <Compile Include="Abstracts\AbstractUIElement.cs" />
     <Compile Include="Abstracts\AbstractWeapon.cs" />
     <Compile Include="Abstracts\AbstractPopup.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="Enums\AlignmentEnum.cs" />
+    <Compile Include="Enums\AspectEnum.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Screens\PlayScreen.cs" />
     <Compile Include="Screens\StartScreen.cs" />
     <Compile Include="Service\MouseService.cs" />
     <Compile Include="TextureManager.cs" />
-    <Compile Include="Stages\StageScreen.cs" />
     <Compile Include="SuperLumic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIElements\ImageButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -127,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ships\" />
+    <Folder Include="Stages\" />
     <Folder Include="Weapons\" />
   </ItemGroup>
   <ItemGroup>
