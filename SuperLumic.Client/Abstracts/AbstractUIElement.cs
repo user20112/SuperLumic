@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SuperLumic.Enums;
+using SuperLumic.Service;
 using System;
 
 namespace SuperLumic.Abstracts
@@ -34,7 +35,7 @@ namespace SuperLumic.Abstracts
         {
             FirstUpdate = false;
         }
-        public double RealHeight
+        public double RealPixelHeight
         {
             get
             {
@@ -44,7 +45,37 @@ namespace SuperLumic.Abstracts
                 }
                 else if (Parent is AbstractUIElement element)
                 {
-                    return Height * element.RealHeight;
+                    return Height * element.RealPixelHeight;
+                }
+                return 0;
+            }
+        }
+        public double RealPixelY
+        {
+            get
+            {
+                if (Parent is SuperLumic SuperLumic)
+                {
+                    return Y * SuperLumic.Height;
+                }
+                else if (Parent is AbstractUIElement element)
+                {
+                    return Y * element.RealPixelHeight + element.RealPixelY;
+                }
+                return 0;
+            }
+        }
+        public double RealPixelX
+        {
+            get
+            {
+                if (Parent is SuperLumic SuperLumic)
+                {
+                    return X * SuperLumic.Width;
+                }
+                else if (Parent is AbstractUIElement element)
+                {
+                    return X * element.RealPixelWidth + element.RealPixelX;
                 }
                 return 0;
             }
@@ -58,7 +89,7 @@ namespace SuperLumic.Abstracts
             CurrentLayerWidth += .001;
             SuperLumic.Instance.Components.Add(element);
         }
-        public double RealWidth
+        public double RealPixelWidth
         {
             get
             {
@@ -68,12 +99,12 @@ namespace SuperLumic.Abstracts
                 }
                 else if (Parent is AbstractUIElement element)
                 {
-                    return Width * element.RealWidth;
+                    return Width * element.RealPixelWidth;
                 }
                 return 0;
             }
         }
-        public double ParentRealWidth
+        public double ParentRealPixelWidth
         {
             get
             {
@@ -83,12 +114,12 @@ namespace SuperLumic.Abstracts
                 }
                 else if (Parent is AbstractUIElement element)
                 {
-                    return element.RealWidth;
+                    return element.RealPixelWidth;
                 }
                 return 0;
             }
         }
-        public double ParentRealHeight
+        public double ParentRealPixelHeight
         {
             get
             {
@@ -98,7 +129,7 @@ namespace SuperLumic.Abstracts
                 }
                 else if (Parent is AbstractUIElement element)
                 {
-                    return element.RealHeight;
+                    return element.RealPixelHeight;
                 }
                 return 0;
             }
@@ -108,9 +139,9 @@ namespace SuperLumic.Abstracts
         {
             CurrentLayerWidth += .0001;
             float AdjustedLayerDepth = (float)((EndLayer - StartLayer) * LayerDepth + StartLayer);
-            Rectangle DestinationRectangle = new Rectangle((int)(x * RealWidth + X * ParentRealWidth), (int)(y * RealHeight + Y * ParentRealHeight), (int)(width * RealWidth), (int)(height * RealHeight));
+            Rectangle DestinationRectangle = new Rectangle((int)(x * RealPixelWidth + X * ParentRealPixelWidth), (int)(y * RealPixelHeight + Y * ParentRealPixelHeight), (int)(width * RealPixelWidth), (int)(height * RealPixelHeight));
             Rectangle TextureRect = new Rectangle(0, 0, Texture.Width, Texture.Height);
-            Origin = new Vector2((float)(Origin.X * Width * RealWidth), (float)(Origin.Y * Height * RealHeight));
+            Origin = new Vector2((float)(Origin.X * Width * RealPixelWidth), (float)(Origin.Y * Height * RealPixelHeight));
             if (Aspect == AspectEnum.AspectFit)
             {
                 int Multiplyer = 100000;
@@ -195,8 +226,8 @@ namespace SuperLumic.Abstracts
         {
             CurrentLayerWidth += .0001;
             float AdjustedLayerDepth = (float)((EndLayer - StartLayer) * LayerDepth + StartLayer);
-            Rectangle DestinationRectangle = new Rectangle((int)(x * RealWidth + X * ParentRealWidth), (int)(y * RealHeight + Y * ParentRealHeight), width, height);
-            Origin = new Vector2((float)(Origin.X + X * RealWidth), (float)(Origin.Y + Y * RealHeight));
+            Rectangle DestinationRectangle = new Rectangle((int)(x * RealPixelWidth + X * ParentRealPixelWidth), (int)(y * RealPixelHeight + Y * ParentRealPixelHeight), width, height);
+            Origin = new Vector2((float)(Origin.X + X * RealPixelWidth), (float)(Origin.Y + Y * RealPixelHeight));
             Game.Draw(Texture, DestinationRectangle, new Rectangle(0, 0, Texture.Width, Texture.Height), TintColor, Rotation, Origin, SpriteEffects.None, AdjustedLayerDepth);
         }
 
@@ -231,18 +262,18 @@ namespace SuperLumic.Abstracts
 
         internal Tuple<double, double> GetMousePosition()
         {
-            int X = (int)(this.X * SuperLumic.Width);
-            int Y = (int)((1 - this.Y) * SuperLumic.Height);
-            int Height = (int)RealHeight;
-            int Width = (int)RealWidth;
-            Vector2 Position = Mouse.GetState().Position.ToVector2();
-            if (Position.X > X && Position.X < X + Width && Position.Y < Y && Position.Y > Y - Height)
+            Tuple<double, double> Position = MouseService.CurrentMousePosition;
+            if (WasInElementLast)
             {
-                return new Tuple<double, double>((Position.X - X) / Width, 1 + ((Position.Y - Y) / Height));
+                Console.WriteLine("X:" + Position.Item1 + " " + "Y:" + Position.Item2);
+                Console.WriteLine("RealX:" + RealPixelX + " " + "RealY:" + RealPixelY + " " + "RealWidth:" + RealPixelWidth + " " + "RealHeight:" + RealPixelHeight);
+            }
+            if (Position.Item1 > RealPixelX && Position.Item1 < RealPixelX + RealPixelWidth && Position.Item2 > RealPixelY && Position.Item2 < RealPixelY + RealPixelHeight)
+            {
+                return new Tuple<double, double>(Position.Item1 - RealPixelX, Position.Item2 - RealPixelY);
             }
             return new Tuple<double, double>(-1, -1);// not in the area, return -1,-1
         }
-
         protected override void LoadContent()
         {
             base.LoadContent();
@@ -252,12 +283,16 @@ namespace SuperLumic.Abstracts
         {
             base.UnloadContent();
         }
-
+        bool WasInElementLast = false;
         public bool IsMouseWithinElement()
         {
             if (GetMousePosition().Item1 == -1)
-                return false;
-            return true;
+            {
+                WasInElementLast = false;
+                return WasInElementLast;
+            }
+            WasInElementLast = true;
+            return WasInElementLast;
         }
     }
 }

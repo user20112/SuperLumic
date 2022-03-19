@@ -45,8 +45,8 @@ namespace SuperLumic
         public SpriteBatch SpriteBatch;
         private Texture2D Background; 
         private Texture2D BlackImage;
-        private int PillarBoxXOffset = 0;
-        private int PillarBoxYOffset = 0;
+        public int PillarBoxXOffset = 0;
+        public int PillarBoxYOffset = 0;
         private List<AbstractPopup> PopupsStack = new List<AbstractPopup>();
         private List<AbstractScreen> ScreenStack = new List<AbstractScreen>();
 

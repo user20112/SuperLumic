@@ -23,13 +23,13 @@ namespace SuperLumic.Service
     public class MouseService : AbstractUIElement
     {
         public static Tuple<double, double> CurrentMousePosition = new Tuple<double, double>(0, 0);
+        public static Tuple<double, double> CurrentMousePositionIncludingPillarBoxes = new Tuple<double, double>(0, 0);
         public static MouseButtonStateEnum M1State = MouseButtonStateEnum.None;
         public static MouseButtonStateEnum M2State = MouseButtonStateEnum.None;
         public static MouseService Instance;
         private List<Tuple<float, MouseIconStateEnum, Guid>> CurrentStateRequests = new List<Tuple<float, MouseIconStateEnum, Guid>>();
         private Texture2D MouseIcon;
         private Dictionary<MouseIconStateEnum, Texture2D> MouseIcons = new Dictionary<MouseIconStateEnum, Texture2D>();
-        private Tuple<double, double> MousePosition;
         public static long M1HoldTime = 0;
         public static long M2HoldTime = 0;
 
@@ -41,9 +41,9 @@ namespace SuperLumic.Service
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
-            if (MousePosition != null && MousePosition.Item1 != -1)
+            if (CurrentMousePositionIncludingPillarBoxes != null && CurrentMousePositionIncludingPillarBoxes.Item1 != -1)
             {
-                DrawRawHeightWidth(MouseIcon, MousePosition.Item1, MousePosition.Item2, Game.MouseSize.Item1, Game.MouseSize.Item2);
+                DrawRawHeightWidth(MouseIcon, CurrentMousePositionIncludingPillarBoxes.Item1, CurrentMousePositionIncludingPillarBoxes.Item2, Game.MouseSize.Item1, Game.MouseSize.Item2);
             }
         }
 
@@ -76,12 +76,33 @@ namespace SuperLumic.Service
         Stopwatch M2StopWatch = new Stopwatch();
         MouseState? M1OnClickMouseState;
         MouseState? M2OnClickMouseState;
+
+        private new Tuple<double, double> GetMousePosition()
+        {
+            MouseState MousePosition = Mouse.GetState();
+            if (MousePosition.Position.X > RealPixelX && MousePosition.Position.X < RealPixelX + RealPixelWidth && MousePosition.Position.Y > RealPixelY && MousePosition.Position.Y < RealPixelHeight - RealPixelY)
+            {
+                return new Tuple<double, double>(MousePosition.Position.X - RealPixelX + SuperLumic.Instance.PillarBoxXOffset, MousePosition.Position.Y - RealPixelY - SuperLumic.Instance.PillarBoxYOffset);
+            }
+            return new Tuple<double, double>(-1, -1);// not in the area, return -1,-1
+        }
+        private Tuple<double, double> GetMousePositionWithPillar()
+        {
+            MouseState MousePosition = Mouse.GetState();
+            if (MousePosition.Position.X > RealPixelX && MousePosition.Position.X < RealPixelX + RealPixelWidth + SuperLumic.Instance.PillarBoxXOffset * 2 && MousePosition.Position.Y > RealPixelY && MousePosition.Position.Y < RealPixelHeight - RealPixelY + SuperLumic.Instance.PillarBoxYOffset * 2)
+            {
+                return new Tuple<double, double>((MousePosition.Position.X - RealPixelX - SuperLumic.Instance.PillarBoxXOffset) / RealPixelWidth, (MousePosition.Position.Y - RealPixelY - SuperLumic.Instance.PillarBoxYOffset) / RealPixelHeight);
+            }
+            return new Tuple<double, double>(-1, -1);// not in the area, return -1,-1
+        }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             if (SuperLumic.Instance.IsActive)
             {
-                MousePosition = GetMousePosition();
+                CurrentMousePosition = GetMousePosition();
+                CurrentMousePositionIncludingPillarBoxes = GetMousePositionWithPillar();
                 MouseState mousestate = Mouse.GetState();
                 switch (mousestate.LeftButton)
                 {
@@ -101,18 +122,26 @@ namespace SuperLumic.Service
                         }
                         break;
                     case ButtonState.Released:
-                        if (M1State == MouseButtonStateEnum.None)
+                        if (M1OnClickMouseState != null)
                         {
-                            if (M1StopWatch.ElapsedMilliseconds <= 150)
+                            if (M1State == MouseButtonStateEnum.None)
                             {
-                                M1State = MouseButtonStateEnum.Clicked;
+                                if (M1StopWatch.ElapsedMilliseconds <= 150)
+                                {
+                                    M1State = MouseButtonStateEnum.Clicked;
+                                }
+                                else
+                                {
+                                    M1State = MouseButtonStateEnum.None;
+                                }
                             }
+                            M1OnClickMouseState = null;
+                            M1StopWatch.Reset();
                         }
                         else
                         {
                             M1State = MouseButtonStateEnum.None;
                         }
-                        M1OnClickMouseState = null;
                         break;
                 }
                 switch (mousestate.RightButton)

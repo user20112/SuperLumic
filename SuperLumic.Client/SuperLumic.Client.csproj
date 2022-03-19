@@ -61,6 +61,7 @@
     <Compile Include="SuperLumic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIElements\Image.cs" />
     <Compile Include="UIElements\ImageButton.cs" />
   </ItemGroup>
   <ItemGroup>
